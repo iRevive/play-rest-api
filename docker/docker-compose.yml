@@ -1,0 +1,37 @@
+ersion: '3'
+services:
+
+  service:
+    restart: always
+    image: "vps483259.ovh.net/play-rest-api:latest"
+    environment:
+      LOG_LEVEL: "INFO"
+      DATABASE_URL: "jdbc:sqlserver://mssql:1433;databaseName=rest-api"
+      DATABASE_USER: "sa"
+      DATABASE_PASSWORD: "yourStrong(!)Password"
+    ports:
+      - 9000:9000
+    volumes:
+      - ./app/:/app/conf/
+    links:
+      - mssql
+    depends_on:
+      - mssql
+
+  mssql:
+    restart: always
+    image: microsoft/mssql-server-linux:latest
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: "yourStrong(!)Password"
+    ports:
+      - 1433:1433
+
+  nginx:
+     restart: always
+     image: nginx:latest
+     ports:
+       - 4000:80
+     volumes:
+       - ./client/:/usr/share/nginx/html/
+       - ./nginx/:/etc/nginx/conf.d/

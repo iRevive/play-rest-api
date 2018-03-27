@@ -1,0 +1,42 @@
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/.idea
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+
+# compiled output
+/play-rest-api-client/dist
+/play-rest-api-client/dist-server
+/play-rest-api-client/tmp
+/play-rest-api-client/out-tsc
+
+# dependencies
+/play-rest-api-client/node_modules
+
+# misc
+/play-rest-api-client/.sass-cache
+/play-rest-api-client/connect.lock
+/play-rest-api-client/coverage
+/play-rest-api-client/libpeerconnection.log
+/play-rest-api-clientnpm-debug.log
+/play-rest-api-clientyarn-error.log
+/play-rest-api-clienttestem.log
+/play-rest-api-client/typings
+
+# e2e
+/play-rest-api-client/e2e/*.js
+/play-rest-api-client/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db

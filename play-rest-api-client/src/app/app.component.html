@@ -1,0 +1,76 @@
+<div style="text-align:center">
+    <h1>
+        Welcome to Play Framework + Angular 4 Example!
+    </h1>
+</div>
+
+<div style="text-align: center">
+    <h2>Users: </h2>
+</div>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Last blog DT</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of users.result.values">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{(user.lastName || 'Empty')}}</td>
+        <td>{{renderTime(user.lastBlogDt)}}</td>
+        <td>
+            <button (click)="deleteUser(user.id)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+<h2>Add user: </h2>
+<div>
+    <label>First name: </label><br>
+    <input type="text" name="firstName" [(ngModel)]="firstName"><br>
+
+    <label>Last name: </label><br>
+    <input type="text" name="lastName" [(ngModel)]="lastName"><br>
+
+    <button (click)="createUser(firstName, lastName)">Save</button>
+</div>
+
+<div style="text-align: center">
+    <h2>Blogs: </h2>
+</div>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>User Id</th>
+        <th>Header</th>
+        <th>Details</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let blog of blogs.result.values">
+        <td>{{blog.id}}</td>
+        <td>{{blog.userId}}</td>
+        <td>{{blog.header}}</td>
+        <td>
+            <ul *ngFor="let detail of blog.details">{{detail.blogContent}}</ul>
+        </td>
+        <td>
+            <button (click)="deleteBlog(blog.id)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+<h2>Add blog: </h2>
+<div>
+    <label>User id: </label><br>
+    <input type="number" name="userId" [(ngModel)]="userId"><br>
+
+    <label>Header: </label><br>
+    <input type="text" name="header" [(ngModel)]="header"><br>
+
+    <label>Content: </label><br>
+    <input type="text" name="content" [(ngModel)]="content"><br>
+
+    <button (click)="createBlog(userId, header, content)">Save</button>
+</div>
