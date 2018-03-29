@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import {Globals} from "./global";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -12,27 +13,27 @@ const httpOptions = {
 @Injectable()
 export class BlogService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private global: Globals) {}
 
     getBlogs() {
-        return this.http.get('http://145.239.78.41:9000/blog', httpOptions);
+        return this.http.get( this.global.serviceUrl + '/blog', httpOptions);
     }
 
     getBlog(id) {
-        return this.http.get('http://145.239.78.41:9000/blog/' + id, httpOptions);
+        return this.http.get(this.global.serviceUrl + '/blog/' + id, httpOptions);
     }
 
     createBlog(blog) {
         let body = JSON.stringify(blog);
-        return this.http.post('http://145.239.78.41:9000/blog', body, httpOptions);
+        return this.http.post(this.global.serviceUrl + '/blog', body, httpOptions);
     }
 
     updateBlog(id, blog) {
         let body = JSON.stringify(blog);
-        return this.http.put('http://145.239.78.41:9000/blog/' + id, body, httpOptions);
+        return this.http.put(this.global.serviceUrl + '/blog/' + id, body, httpOptions);
     }
 
     deleteBlog(id) {
-        return this.http.delete('http://145.239.78.41:9000/blog/' + id, httpOptions);
+        return this.http.delete(this.global.serviceUrl + '/blog/' + id, httpOptions);
     }
 }
